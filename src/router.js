@@ -8,7 +8,8 @@ const router = createRouter({
   routes: [
     { path: '/', redirect: '/form' },
     { path: '/form', component: TicketForm },
-    { path: '/confirm', component: TicketConfirm },
+    { path: '/confirm', component: TicketConfirm, props: true },
+
     { path: '/:notFound(.*)', redirect: '/form' },
   ],
 });

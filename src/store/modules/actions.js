@@ -15,15 +15,12 @@ export default {
         body: JSON.stringify(newData),
       }
     );
-
     const responseData = await response.json();
-
-    newData.id = responseData.name;
-
     if (!response.ok) {
-      const error = new Error(responseData.message || 'Failed to send data');
+      const error = new Error(responseData.message || 'Failed to send Data');
       throw error;
     }
+
     context.commit('storeUser', newData);
   },
 
@@ -50,7 +47,7 @@ export default {
         persons: responseData[id].persons,
         total: responseData[id].total,
       };
-      users.push(user);
+      users.unshift(user);
     }
     context.commit('getUser', users);
   },

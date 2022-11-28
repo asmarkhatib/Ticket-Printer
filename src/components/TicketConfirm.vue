@@ -1,57 +1,36 @@
 <template>
   <div>
-    <div>
-      <h2>
-        Your Ticket Is Confirm...!
-        <span
-          ><strong>{{ time }}</strong></span
-        >
-      </h2>
-      <h3>Mr./Mrs. {{ fullName }}</h3>
-      <p>
-        Your ticket is confirm from {{ boardingPoint }} to
-        {{ destinationPoint }}.
-      </p>
-      <p>Passengers: {{ persons }}</p>
-      <p>Amount: Rs.{{ total }}</p>
-      <h4>We Wish you safe, con and happy journey...!</h4>
-    </div>
+    <h2>Your Ticket Is Confirm...!</h2>
+    <span><strong>Date: </strong>{{ time }}</span>
+    <ul>
+      <li v-for="user in usersData" :key="user">
+        <h3>Mr./Mrs. {{ user.fullName }}</h3>
+        <p>Your ticket is confirm from {{ user.from }} to {{ user.to }}.</p>
+        <p>Passengers: {{ user.persons }}</p>
+        <p>Amount: Rs.{{ user.total }}</p>
+        <h4>We Wish you safe, comfortable and happy journey...!</h4>
+      </li>
+    </ul>
   </div>
 </template>
 
 <script>
 export default {
-  data() {
-    return {
-      selectedUser: null,
-    };
-  },
-
   computed: {
     time() {
-      return new Date().toISOString();
+      return new Date();
     },
-    fullName() {
-      return this.selectedUser.fullName;
-    },
-    boardingPoint() {
-      return this.selectedUser.from;
-    },
-    destinationPoint() {
-      return this.selectedUser.to;
-    },
-    persons() {
-      return this.selectedUser.persons;
-    },
-    total() {
-      return this.selectedUser.total;
+    usersData() {
+      return this.$store.getters.users;
     },
   },
-
   created() {
-    this.selectedUser = this.$store.getters.users.filter(
-      (ele) => ele.id === id
-    );
+    this.loadData();
+  },
+  methods: {
+    loadData() {
+      this.$store.dispatch('getUser');
+    },
   },
 };
 </script>

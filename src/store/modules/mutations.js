@@ -1,6 +1,6 @@
 export default {
   storeUser(state, payload) {
-    state.users.push(payload);
+    state.users.unshift(payload);
   },
   getUser(state, payload) {
     state.users = payload;

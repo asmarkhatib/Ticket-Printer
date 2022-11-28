@@ -1,18 +1,23 @@
 import { createStore } from 'vuex';
 
-import mutations from './mutations.js';
-import actions from './actions.js';
-import getters from './getters.js';
+import ticketModule from './modules/index.js';
 
 const store = createStore({
+  modules: {
+    ticket: ticketModule,
+  },
+
   state() {
     return {
-      users: [],
+      userId: 'c3',
     };
   },
-  mutations,
-  actions,
-  getters,
+
+  // getters: {
+  //   userId(state) {
+  //     return state.userId;
+  //   },
+  // },
 });
 
 export default store;

@@ -37,7 +37,6 @@
 
 <script>
 export default {
-  // emits: ['save-data'],
   data() {
     return {
       cites: [
@@ -57,9 +56,11 @@ export default {
       isValid: true,
       price: 50,
       total: 0,
+      results: {},
     };
   },
 
+  computed: {},
   methods: {
     submitData() {
       if (
@@ -98,12 +99,11 @@ export default {
         total: this.total,
       });
 
+      this.$router.push('/confirm');
       this.fullName = '';
       this.source = '';
       this.destination = '';
       this.persons = '';
-
-      this.$router.replace('/confirm');
     },
   },
 };
