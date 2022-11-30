@@ -11,6 +11,9 @@
         <h4>We Wish you safe, comfortable and happy journey...!</h4>
       </li>
     </ul>
+    <div>
+      <router-link to="/form"><button>Book More Tickets</button></router-link>
+    </div>
   </div>
 </template>
 

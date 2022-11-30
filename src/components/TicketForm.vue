@@ -99,7 +99,7 @@ export default {
         total: this.total,
       });
 
-      this.$router.push('/confirm');
+      this.$router.replace('/confirm');
       this.fullName = '';
       this.source = '';
       this.destination = '';
